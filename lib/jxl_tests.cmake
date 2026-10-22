@@ -3,7 +3,7 @@
 
 include(jxl_lists.cmake)
 
-if (BUILD_TESTING OR JPEGXL_ENABLE_TOOLS)
+if (JPEGXL_ENABLE_TESTS OR JPEGXL_ENABLE_TOOLS)
 # Library with test-only code shared between all tests / fuzzers.
 add_library(jxl_testlib-internal STATIC ${JPEGXL_INTERNAL_TESTLIB_FILES})
 target_compile_options(jxl_testlib-internal PRIVATE
@@ -22,7 +22,7 @@ target_link_libraries(jxl_testlib-internal
 )
 endif()
 
-if (NOT BUILD_TESTING)
+if (NOT JPEGXL_ENABLE_TESTS)
   return()
 endif()
 
@@ -94,5 +94,7 @@ foreach (TESTFILE IN LISTS JPEGXL_INTERNAL_TESTS)
     set_target_properties(${TESTNAME} PROPERTIES COMPILE_FLAGS "-Wno-error")
   endif ()
   # 240 seconds because some build types (e.g. coverage) can be quite slow.
-  gtest_discover_tests(${TESTNAME} DISCOVERY_TIMEOUT 240 DISCOVERY_MODE PRE_TEST)
+  if(JPEGXL_ENABLE_TESTS)
+    gtest_discover_tests(${TESTNAME} DISCOVERY_TIMEOUT 240 DISCOVERY_MODE PRE_TEST)
+  endif()
 endforeach ()

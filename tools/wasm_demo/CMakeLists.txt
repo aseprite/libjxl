@@ -58,7 +58,7 @@ set_target_properties(jxl_decoder PROPERTIES LINK_FLAGS
 set_target_properties(jxl_decoder_for_test PROPERTIES LINK_FLAGS
   "${JXL_DECODER_LINK_FLAGS} ${JXL_WASM_TEST_LINK_FLAGS}")
 
-if (BUILD_TESTING)
+if (JPEGXL_ENABLE_TESTS)
   add_test(
     NAME test_wasm_jxl_decoder
     COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR}
@@ -67,4 +67,4 @@ if (BUILD_TESTING)
   )
   set_tests_properties(test_wasm_jxl_decoder PROPERTIES
     ENVIRONMENT NODE_PATH=$<TARGET_FILE_DIR:jxl_decoder_for_test>)
-endif()  # BUILD_TESTING
+endif()  # JPEGXL_ENABLE_TESTS

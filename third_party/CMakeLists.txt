@@ -13,7 +13,7 @@
 # limitations under the License.
 
 if((SANITIZER STREQUAL "asan") OR (SANITIZER STREQUAL "msan"))
-  set(BUILD_TESTING OFF)
+  set(JPEGXL_ENABLE_TESTS OFF)
 endif()
 
 # Highway

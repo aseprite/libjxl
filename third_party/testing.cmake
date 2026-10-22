@@ -18,7 +18,7 @@ include(CTest)
 
 set(SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
 
-if(BUILD_TESTING)
+if(JPEGXL_ENABLE_TESTS)
 # Add GTest from source and alias it to what the find_package(GTest) workflow
 # defines. Omitting googletest/ directory would require it to be available in
 # the base system instead, but it would work just fine. This makes packages
@@ -61,4 +61,4 @@ else()
   add_library(gtest_main ALIAS GTest::Main)
 endif()
 
-endif()  # BUILD_TESTING
+endif()  # JPEGXL_ENABLE_TESTS

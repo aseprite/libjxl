@@ -392,7 +392,7 @@ endforeach()
 
 # EMSCRIPTEN doesn't support dynamic libraries so testing for linkage there
 # doesn't make much sense.
-if(BUILD_TESTING AND TARGET jxl AND NOT JPEGXL_EMSCRIPTEN)
+if(JPEGXL_ENABLE_TESTS AND TARGET jxl AND NOT JPEGXL_EMSCRIPTEN)
 # Library API test. This test is only to check that we can link against the
 # shared library from C99 file and don't need to use internal symbols.
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests)
@@ -426,7 +426,7 @@ if(UNIX AND CMAKE_SKIP_RPATH)
      )
 endif()
 
-endif()  # BUILD_TESTING AND TARGET jxl AND NOT JPEGXL_EMSCRIPTEN
+endif()  # JPEGXL_ENABLE_TESTS AND TARGET jxl AND NOT JPEGXL_EMSCRIPTEN
 
 # Tools defined in subdirectories.
 if(JPEGXL_ENABLE_VIEWERS)

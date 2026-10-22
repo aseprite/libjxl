@@ -35,7 +35,7 @@ install(TARGETS pixbufloader-jxl DESTINATION "${GDK_PIXBUF_MODULEDIR}")
 # /usr/share/thumbnailers/gdk-pixbuf-thumbnailer.thumbnailer
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/jxl.thumbnailer DESTINATION "${CMAKE_INSTALL_DATADIR}/thumbnailers/")
 
-if(BUILD_TESTING AND NOT CMAKE_CROSSCOMPILING)
+if(JPEGXL_ENABLE_TESTS AND NOT CMAKE_CROSSCOMPILING)
   pkg_check_modules(Gdk IMPORTED_TARGET gdk-2.0)
   if (Gdk_FOUND)
     # Test for loading a .jxl file using the pixbufloader library via GDK. This
@@ -86,4 +86,4 @@ if(BUILD_TESTING AND NOT CMAKE_CROSSCOMPILING)
       set_tests_properties(pixbufloader_test_jxl PROPERTIES SKIP_RETURN_CODE 254)
     endif()
   endif()  # Gdk_FOUND
-endif()  # BUILD_TESTING
+endif()  # JPEGXL_ENABLE_TESTS

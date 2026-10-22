@@ -3,7 +3,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 
-if(BUILD_TESTING AND CMAKE_EXECUTABLE_SUFFIX STREQUAL "")
+if(JPEGXL_ENABLE_TESTS AND CMAKE_EXECUTABLE_SUFFIX STREQUAL "")
   # Script to validate the tooling.
   # Only add it when djxl being build.
   if(JPEGXL_ENABLE_TOOLS)
@@ -18,4 +18,4 @@ if(BUILD_TESTING AND CMAKE_EXECUTABLE_SUFFIX STREQUAL "")
       set_tests_properties(conformance_tooling_test PROPERTIES SKIP_RETURN_CODE 254)
     endif() # BASH_PROGRAM
   endif() # JPEGXL_ENABLE_TOOLS
-endif() # BUILD_TESTING
+endif() # JPEGXL_ENABLE_TESTS
